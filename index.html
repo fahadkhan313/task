@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="text/javascript" src="script.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="main">
+        <h1 class="text-center">Grocery List</h1>
+        <div class="firstdiv">
+            <form name="groceryform" action="">
+                <label for="item">Add Item: </label>
+                <input type="text" id="item" name="item" onkeyup="somethingcameup()" required>
+                <button type="button" id="needbtn" disabled class="btn " style="background-color: white; color:blue" onClick="need(this.form)">Need</button>
+                <button type="button" id="havebtn" disabled class="btn " style="background-color: white; color:blue" onClick="have(this.form)">Have</button>
+            </form>
+        </div>
+        <h1 class="text-center">Need:</h1>
+        <div class="seconddiv">
+            <div id="needs" class="list-group">
+                <label id="needlab1" class="list-group-item">
+                <input id="needinp1" class="form-check-input me-1" type="checkbox" value="" onClick="putitemtohavelist(this.id)" >
+                <p style="color:blue; display:inline">1 kg Sugar</p>
+                <button id="needbut1" type="button" class="btn" style=" color:red ; float: right" onClick="removeelementfrmneed(this.id)">Remove</button>
+                </label>
+
+                <label id="needlab2" class="list-group-item">
+                <input id="needinp2" class="form-check-input me-1" type="checkbox" value="" onClick="putitemtohavelist(this.id)" >
+                <p style="color:blue; display:inline">2 kg Salt</p>
+                <button id="needbut2" type="button" class="btn" style=" color:red ; float: right" onClick="removeelementfrmneed(this.id)">Remove</button>
+                </label>
+
+                <label id="needlab3" class="list-group-item">
+                <input id="needinp3" class="form-check-input me-1" type="checkbox" value="" onClick="putitemtohavelist(this.id)" >
+                <p style="color:blue; display:inline">500 G. peanut butter</p>
+                <button id="needbut3" type="button" class="btn" style=" color:red ; float: right" onClick="removeelementfrmneed(this.id)">Remove</button>
+                </label>
+
+                <label id="needlab4" class="list-group-item">
+                <input id="needinp4" class="form-check-input me-1" type="checkbox" value=""  onClick="putitemtohavelist(this.id)">
+                <p style="color:blue; display:inline">500 G. Red Chilli</p>
+                <button id="needbut4" type="button" class="btn" style=" color:red ; float: right" onClick="removeelementfrmneed(this.id)">Remove</button>
+                </label>
+
+                <label id="needlab5" class="list-group-item">
+                <input id="needinp5" class="form-check-input me-1" type="checkbox" value="" onClick="putitemtohavelist(this.id)">
+                <p style="color:blue; display:inline">1 liter oil</p>
+                <button id="needbut5" type="button" class="btn" style=" color:red ; float: right" onClick="removeelementfrmneed(this.id)">Remove</button>
+                </label>
+            </div>
+        </div>
+        <h1 class="text-center">Have:</h1>
+        <div class="seconddiv">
+            <div id="haves" class="list-group">
+                <label id="havelab1" class="list-group-item">
+                <input id="haveinp1" class="form-check-input me-1" type="checkbox" value="" onClick="putitemtoneedlist(this.id)" checked>
+                <p style="color:blue; display:inline">Milk</p>
+                <button  id="havebut1" type="button" class="btn" style=" color:red ; float: right" onClick="removeelementfrmhave(this.id)">Remove</button>
+                </label>
+                <label id="havelab2" class="list-group-item">
+                <input  id="haveinp2" class="form-check-input me-1" type="checkbox" value=""  onClick="putitemtoneedlist(this.id)" checked>
+                <p style="color:blue; display:inline">Almonds</p>
+                <button  id="havebut2" type="button" class="btn" style=" color:red ; float: right" onClick="removeelementfrmhave(this.id)">Remove</button>
+                </label>
+                <label id="havelab3" class="list-group-item">
+                <input  id="haveinp3" class="form-check-input me-1" type="checkbox" value=""  onClick="putitemtoneedlist(this.id)" checked>
+                <p style="color:blue; display:inline">Room Freshner</p>
+                <button  id="havebut3" type="button" class="btn" style=" color:red ; float: right" onClick="removeelementfrmhave(this.id)">Remove</button>
+                </label>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
