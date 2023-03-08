@@ -1,4 +1,5 @@
 
+//everything working
 
 //global variable to keep track of newly added label and button id's in need block
 var needlabnbutpointer = 5;//since we are already having 5 elements in the list
@@ -6,8 +7,6 @@ var needlabnbutpointer = 5;//since we are already having 5 elements in the list
 //global variable to keep track of newly added label and button id's in have block
 var havelabnbutpointer = 3;//since we are already having 3 elements in the list
 
-//global variable to keep track of checkboxes in have list
-var haveinppointer = 3;
 
 //handling buttons via input fields content
 function somethingcameup() {
@@ -36,6 +35,7 @@ function need(form) {
     newinput.classList="form-check-input me-1";
     newinput.type="checkbox";
     newinput.value="";
+    newinput.id=`needinp${needlabnbutpointer+1}`;
     newinput.addEventListener("click",function(){
         putitemtohavelist(this.id);
     })
@@ -50,7 +50,6 @@ function need(form) {
     // <button type="button" class="btn" style=" color:red ; float: right">Remove</button>
     var newbutton = document.createElement("button");
     newbutton.id=`needbut${needlabnbutpointer+1}`;
-    newbutton.onclick=`removeelementfrmneed(needbut${needlabnbutpointer+1})`; 
     newbutton.type="button";
     newbutton.className="btn";
     newbutton.style.color="red";
@@ -68,8 +67,8 @@ function need(form) {
     const labels = document.getElementById("needs");
     labels.appendChild(newlabel);
     needlabnbutpointer++;
-    // var temp =document.getElementById("item");
-    // temp.value="";
+    var temp =document.getElementById("item");
+    temp.value="";
     // console.log("labid",newlabel.id);
     // console.log("butid",newbutton.id);
 }
@@ -87,13 +86,14 @@ function have(form) {
 
     // <input class="form-check-input me-1" type="checkbox" value=""></input>
     var newinput = document.createElement("input");
-    newinput.addEventListener("click",function(){
-        putitemtoneedlist(this.id);
-    })
     newinput.classList="form-check-input me-1";
     newinput.type="checkbox";
     newinput.value="";
     newinput.checked="true";
+    newinput.id=`haveinp${havelabnbutpointer+1}`;
+    newinput.addEventListener("click",function(){
+        putitemtoneedlist(this.id);
+    })
 
     // <p style="color:blue; display:inline">1 kg Sugar</p>
     var newp = document.createElement("p");
@@ -105,7 +105,7 @@ function have(form) {
     // <button type="button" class="btn" style=" color:red ; float: right">Remove</button>
     var newbutton = document.createElement("button");
     newbutton.id=`havebut${havelabnbutpointer+1}`;
-    newbutton.onclick="removeelementfrmhave(this.id)";
+    // newbutton.onclick="removeelementfrmhave(this.id)";
     newbutton.type="button";
     newbutton.className="btn";
     newbutton.style.color="red";
@@ -122,6 +122,11 @@ function have(form) {
 
     const labels = document.getElementById("haves");
     labels.appendChild(newlabel);
+    havelabnbutpointer++;
+    var temp =document.getElementById("item");
+    temp.value="";
+    // console.log("have list newly added label id is : ",newlabel.id);
+    // console.log("have list newly added checkbox id is : ",newinput.id);
     // console.log("succes");
 }
 
@@ -142,12 +147,13 @@ function removeelementfrmhave(id){
 
 function putitemtoneedlist(id){
     //extracting text from have list
-    console.log("id is :",id);
+    // console.log("id is :",id);
     var tmp = id.charAt(id.length-1);
-    console.log("tmp is : ",tmp);
+    // console.log("tmp is : ",tmp);
     const coll = document.getElementById(`havelab${tmp}`).children;
-    console.log(coll);
+    // console.log(coll);
     var txt3=coll[1].innerText;
+
     //label
     const newlabel = document.createElement("label");
     newlabel.className="list-group-item";
@@ -158,6 +164,7 @@ function putitemtoneedlist(id){
     newinput.classList="form-check-input me-1";
     newinput.type="checkbox";
     newinput.value="";
+    newinput.id=`needinp${needlabnbutpointer+1}`;
     newinput.addEventListener("click",function(){
         putitemtohavelist(this.id);
     })
@@ -172,7 +179,6 @@ function putitemtoneedlist(id){
     // <button type="button" class="btn" style=" color:red ; float: right">Remove</button>
     var newbutton = document.createElement("button");
     newbutton.id=`needbut${needlabnbutpointer+1}`;
-    newbutton.onclick=`removeelementfrmneed(needbut${needlabnbutpointer+1})`; 
     newbutton.type="button";
     newbutton.className="btn";
     newbutton.style.color="red";
@@ -199,7 +205,7 @@ function putitemtohavelist(id){
     //extracting text from have list
     var tmp = id.charAt(id.length-1);
     const coll = document.getElementById(`needlab${tmp}`).children;
-    console.log(coll);
+    // console.log(coll);
     var txt4=coll[1].innerText;
     //label
     const newlabel = document.createElement("label");
@@ -212,6 +218,7 @@ function putitemtohavelist(id){
     newinput.type="checkbox";
     newinput.value="";
     newinput.checked="true";
+    newinput.id=`haveinp${havelabnbutpointer+1}`;
     newinput.addEventListener("click",function(){
         putitemtoneedlist(this.id);
     })
@@ -226,7 +233,6 @@ function putitemtohavelist(id){
     // <button type="button" class="btn" style=" color:red ; float: right">Remove</button>
     var newbutton = document.createElement("button");
     newbutton.id=`haebut${havelabnbutpointer+1}`;
-    newbutton.onclick=`removeelementfrmhave(havebut${havelabnbutpointer+1})`; 
     newbutton.type="button";
     newbutton.className="btn";
     newbutton.style.color="red";
@@ -245,6 +251,5 @@ function putitemtohavelist(id){
     labels.appendChild(newlabel);
     havelabnbutpointer++;
 
-    // var tmp = id.charAt(id.length-1);
     document.getElementById(`needlab${tmp}`).remove();
 }
